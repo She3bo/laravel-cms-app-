@@ -15,9 +15,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" >     -->
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('trixStyle')
 </head>
 <body>
     <div id="app">
@@ -76,12 +77,16 @@
                 <div class="row">
                     <div class="col-md-3 py-4">
                         <ul class="list-group text-center">
-                            <a href="#" class="text-decoration-none">
+                            <a href="{{route('posts.index')}}" class="text-decoration-none">
                                 <li class="list-group-item ">Posts</li>
                             </a>
                             <a href="{{route('categories.index')}}"
                                 class="text-decoration-none" >
                                 <li class="list-group-item">Categories</li>
+                            </a>
+                            <a href="{{route('trash.index')}}"
+                                class="text-decoration-none" >
+                                <li class="list-group-item">Trashed Posts</li>
                             </a>
                         </ul>
                     </div>
@@ -98,5 +103,6 @@
             </main>
         @endauth
     </div>
+    @yield('trixJs')
 </body>
 </html>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -13,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('post.index',['posts'=>Post::all()]);
     }
 
     /**
@@ -23,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -32,9 +35,16 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        Post::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'content' => $request->content,
+            'image' => $request->image->store('images','public')
+        ]);
+        session()->flash('success','Post Created Successfully');
+        return redirect('posts');
     }
 
     /**
@@ -54,9 +64,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('post.create')->withPost($post);
     }
 
     /**
@@ -66,9 +76,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        echo "A7a";
     }
 
     /**
@@ -79,6 +89,27 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $post = Post::withTrashed()->where('id',$id)->first();
+       // dd($post);
+        if($post->trashed()){
+            $post->forceDelete();
+            Storage::disk('public')->delete($post->image);
+            session()->flash('success','Post deleted Successfully');
+            return redirect('/trashed');
+        }else{
+            $post->delete();
+            session()->flash('success','Post Trashed Successfully');
+            return redirect('posts');
+        }
+        
+    }
+    public function trash(){
+        $trashedPost = Post::onlyTrashed()->get();
+        return view('post.index')->withPosts($trashedPost);
+    }
+    public function restore($id){
+        Post::withTrashed()->where('id',$id)->restore();
+        return redirect('posts');
     }
 }
