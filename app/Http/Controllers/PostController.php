@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
-
+use App\Category;
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkCategory')->only('create');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +31,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+       // dd(Category::all());
+        return view('post.create')->with('categories',Category::all());
     }
 
     /**
@@ -41,6 +47,7 @@ class PostController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
+            'category_id' => $request->category_id,
             'image' => $request->image->store('images','public')
         ]);
         session()->flash('success','Post Created Successfully');
@@ -76,9 +83,17 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        echo "A7a";
+        $data = $request->only(['title','description','content']);
+        if($request->hasFile('image')){
+            $image = $request->image->store('images','public');
+            Storage::disk('public')->delete($post->image);
+            $data['image']= $image;
+        }
+        $post->update($data);
+        session()->flash('success','Post Updated Successfully');
+        return redirect('posts');
     }
 
     /**

@@ -14,7 +14,7 @@
 @endif
 
     <div class="card card-defult">
-       <div class="card-header">Add a new Post</div>
+       <div class="card-header">{{isset($post)? "Update Post":"Add a new Post"}}</div>
        <div class="card-body">
             <form action="{{isset($post)? route('posts.update',$post->id) : route('posts.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
@@ -35,6 +35,14 @@
                     <!-- <input id="x" type="hidden" name="content">
                     <trix-editor input="x">{{isset($post) ? $post->content:''}}</trix-editor> -->
                 </div>
+                <div class="form-group">
+                    <label for="categorySelect">Select Category</label>
+                    <select name="category_id" class="form-control" id="categorySelect">
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group ">
                     <label for="post-image" class="d-block">Image : </label>
                     <input id="post-image" type="file" name="image" value = "" class="d-block mb-3">
@@ -43,7 +51,7 @@
                         <img src="{{asset('storage/'.$post->image)}}" alt="" width='200px' height='200px'>
                     @endif
                 </div>
-                   <button type="submit" class="btn btn-primary">Add</button>
+                   <button type="submit" class="btn btn-primary">{{isset($post)? "Update":"Add"}}</button>
             </form>
 
        </div>

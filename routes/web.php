@@ -15,10 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 Auth::routes();
+Route::group(['middleware => auth'],function(){
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('categories','categoryController');
+    Route::resource('tags','TagController');
+    Route::resource('posts','PostController');
+    Route::get('/trashed','PostController@trash')->name('trash.index');
+    Route::get('/restore/{id}','PostController@restore')->name('restore');
+});
 
-Route::resource('categories','categoryController');
-Route::resource('posts','PostController');
-Route::get('/trashed','PostController@trash')->name('trash.index');
-Route::get('/restore/{id}','PostController@restore')->name('restore');

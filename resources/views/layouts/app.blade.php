@@ -84,6 +84,10 @@
                                 class="text-decoration-none" >
                                 <li class="list-group-item">Categories</li>
                             </a>
+                            <a href="{{route('tags.index')}}"
+                                class="text-decoration-none" >
+                                <li class="list-group-item">Tags</li>
+                            </a>
                             <a href="{{route('trash.index')}}"
                                 class="text-decoration-none" >
                                 <li class="list-group-item">Trashed Posts</li>

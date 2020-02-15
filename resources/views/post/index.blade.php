@@ -51,7 +51,7 @@
                 </table>
             </div>
         @else
-            <div><h1>No Posts Yet.</h1></div>
+            <h4 class="text-center">No Posts Yet.</h4>
         @endif
     </div>
 @endsection
