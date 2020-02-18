@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,7 +18,7 @@
     <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" >     -->
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @yield('trixStyle')
+    @yield('stylesheets')
 </head>
 <body>
     <div id="app">
@@ -26,6 +26,9 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
+                </a>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                   contact
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -56,6 +59,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('users.edit',1) }}">
+                                        {{ __('Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -77,6 +83,9 @@
                 <div class="row">
                     <div class="col-md-3 py-4">
                         <ul class="list-group text-center">
+                        <a href="{{route('users.index')}}" class="text-decoration-none">
+                                <li class="list-group-item ">Users</li>
+                            </a>
                             <a href="{{route('posts.index')}}" class="text-decoration-none">
                                 <li class="list-group-item ">Posts</li>
                             </a>
@@ -91,6 +100,9 @@
                             <a href="{{route('trash.index')}}"
                                 class="text-decoration-none" >
                                 <li class="list-group-item">Trashed Posts</li>
+                            </a>
+                            <a href="{{route('users.edit',1)}}" class="text-decoration-none">
+                                <li class="list-group-item ">Profile</li>
                             </a>
                         </ul>
                     </div>
@@ -107,6 +119,6 @@
             </main>
         @endauth
     </div>
-    @yield('trixJs')
+    @yield('scripts')
 </body>
 </html>

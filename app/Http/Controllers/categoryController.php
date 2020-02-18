@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
 use App\Http\Requests\CategoryRequest;
 
 class categoryController extends Controller
@@ -88,8 +89,13 @@ class categoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        session()->flash('success' , $category->name . ' Category deleted successfully');
-        $category->delete();
+        $count = Post::all()->where('category_id',$category->id)->count();
+        if($count>0){
+            session()->flash('error' , 'You cann\'t delete '. $category->name . ' Category becouse it tied with other posts');
+        }else{
+            session()->flash('success' , $category->name . ' Category deleted successfully');
+            $category->delete();
+        }
         return redirect('categories');
     }
 }

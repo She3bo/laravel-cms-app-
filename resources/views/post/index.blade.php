@@ -5,10 +5,11 @@
            {{session()->get('success')}}
         </div>
     @endif
-    <div class="clearfix">
-        <a href="{{route('posts.create')}}" class="btn btn-success float-right"
-        style="margin-bottom:5px">Add Post</a>
-    </div>
+    
+        <div class="clearfix">
+            <a href="{{route('posts.create')}}" class="btn btn-success float-right"
+            style="margin-bottom:5px">Add Post</a>
+        </div>
     <div class="card card-defult">
         <div class="card-header text-center"><h1>All Posts</h1></div>
         @if($posts->count()>0)

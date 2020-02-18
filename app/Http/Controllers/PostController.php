@@ -8,6 +8,7 @@ use App\Http\Requests\PostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
+use App\Tag;
 class PostController extends Controller
 {
     public function __construct()
@@ -32,7 +33,8 @@ class PostController extends Controller
     public function create()
     {
        // dd(Category::all());
-        return view('post.create')->with('categories',Category::all());
+        return view('post.create',['categories' => Category::all(),
+                                  'tags' => Tag::all()]);
     }
 
     /**
@@ -43,13 +45,16 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        Post::create([
+       $post = Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
             'category_id' => $request->category_id,
             'image' => $request->image->store('images','public')
         ]);
+        if($request->tags)
+            $post->tags()->attach($request->tags);
+
         session()->flash('success','Post Created Successfully');
         return redirect('posts');
     }
@@ -73,7 +78,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('post.create')->withPost($post);
+        return view('post.create',[ 'post'       => $post,
+                                    'categories' => Category::all(),
+                                    'tags'       => Tag::all()
+                                  ]);
     }
 
     /**
@@ -91,6 +99,8 @@ class PostController extends Controller
             Storage::disk('public')->delete($post->image);
             $data['image']= $image;
         }
+        if($request->tags)
+            $post->tags()->sync($request->tags);
         $post->update($data);
         session()->flash('success','Post Updated Successfully');
         return redirect('posts');
@@ -110,6 +120,7 @@ class PostController extends Controller
         if($post->trashed()){
             $post->forceDelete();
             Storage::disk('public')->delete($post->image);
+            $post->tags()->detach();
             session()->flash('success','Post deleted Successfully');
             return redirect('/trashed');
         }else{

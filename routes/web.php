@@ -25,3 +25,8 @@ Route::group(['middleware => auth'],function(){
     Route::get('/restore/{id}','PostController@restore')->name('restore');
 });
 
+Route::middleware(['auth'])->group(function(){
+    Route::get('users','UsersController@index')->name('users.index');
+    Route::get('user/{id}/edit','UsersController@edit')->name('users.edit');
+});
+

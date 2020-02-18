@@ -88,6 +88,7 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         session()->flash('success' , $tag->name . ' deleted successfully');
+        $tag->posts()->detach();
         $tag->delete();
         return redirect(route('tags.index'));
     }
