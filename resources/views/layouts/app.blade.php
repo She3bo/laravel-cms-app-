@@ -59,7 +59,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('users.edit',1) }}">
+                                    <a class="dropdown-item" href="{{ route('users.profile',auth()->user()->id) }}">
                                         {{ __('Profile') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -83,9 +83,11 @@
                 <div class="row">
                     <div class="col-md-3 py-4">
                         <ul class="list-group text-center">
-                        <a href="{{route('users.index')}}" class="text-decoration-none">
-                                <li class="list-group-item ">Users</li>
-                            </a>
+                            @if(auth()->user()->isAdmin())
+                                <a href="{{route('users.index')}}" class="text-decoration-none">
+                                    <li class="list-group-item ">Users</li>
+                                </a>
+                            @endif
                             <a href="{{route('posts.index')}}" class="text-decoration-none">
                                 <li class="list-group-item ">Posts</li>
                             </a>
@@ -101,7 +103,7 @@
                                 class="text-decoration-none" >
                                 <li class="list-group-item">Trashed Posts</li>
                             </a>
-                            <a href="{{route('users.edit',1)}}" class="text-decoration-none">
+                            <a href="{{route('users.profile',auth()->user()->id)}}" class="text-decoration-none">
                                 <li class="list-group-item ">Profile</li>
                             </a>
                         </ul>

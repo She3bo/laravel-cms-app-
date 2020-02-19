@@ -93,17 +93,18 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $data = $request->only(['title','description','content']);
-        if($request->hasFile('image')){
-            $image = $request->image->store('images','public');
-            Storage::disk('public')->delete($post->image);
-            $data['image']= $image;
-        }
-        if($request->tags)
-            $post->tags()->sync($request->tags);
-        $post->update($data);
-        session()->flash('success','Post Updated Successfully');
-        return redirect('posts');
+        dd($post);
+        // $data = $request->only(['title','description','content']);
+        // if($request->hasFile('image')){
+        //     $image = $request->image->store('images','public');
+        //     Storage::disk('public')->delete($post->image);
+        //     $data['image']= $image;
+        // }
+        // if($request->tags)
+        //     $post->tags()->sync($request->tags);
+        // $post->update($data);
+        // session()->flash('success','Post Updated Successfully');
+        // return redirect('posts');
     }
 
     /**
