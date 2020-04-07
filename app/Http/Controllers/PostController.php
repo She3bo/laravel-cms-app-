@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Category;
 use App\Tag;
+use App\User;
 class PostController extends Controller
 {
     public function __construct()
@@ -25,7 +26,7 @@ class PostController extends Controller
         if(auth()->user()->isAdmin()){
             return view('post.index',['posts'=>Post::all()]);
         }
-        return view('post.index',['posts'=>Post::all()]);
+        return view('post.index',['posts'=>User::find(auth()->user()->id)->posts]);
     }
 
     /**
@@ -53,6 +54,7 @@ class PostController extends Controller
             'description' => $request->description,
             'content' => $request->content,
             'category_id' => $request->category_id,
+            'user_id' => auth()->user()->id,
             'image' => $request->image->store('images','public')
         ]);
         if($request->tags)
