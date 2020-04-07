@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png"> 
-    <title>Readit - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Readit</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -73,196 +73,30 @@
    		<div class="container">
    			<div class="row">
    				<div class="col-md-12">
+                   @foreach($posts as $post)
    					<div class="case">
    						<div class="row">
    							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_1.jpg);"></a>
+   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0"><img src="{{asset('storage/'.$post->image)}}" width="90%" height='100%'></a>
    							</div>
    							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
    								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Illustration</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
+   									<span class="subheading">{{$post->category->name}}</span>
+   									<h2><a href="blog-single.html">{{$post->description}}</a></h2>
    									<ul class="media-social list-unstyled">
 			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
 			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
 			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
 			              </ul>
    									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
+   										<p class="mb-0"><a href="#">{{$post->created_at}}</a> | <a href="#">12 min read</a></p>
    									</div>
    								</div>
    							</div>
    						</div>
    					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_2.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Application</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_3.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Design</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_4.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Illustration</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_5.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Illustration</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_6.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Illustration</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_7.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Illustration</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_8.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Illustration</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   					<div class="case">
-   						<div class="row">
-   							<div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-   								<a href="blog-single.html" class="img w-100 mb-3 mb-md-0" style="background-image: url(images/image_9.jpg);"></a>
-   							</div>
-   							<div class="col-md-6 col-lg-6 col-xl-4 d-flex">
-   								<div class="text w-100 pl-md-3">
-   									<span class="subheading">Illustration</span>
-   									<h2><a href="blog-single.html">Build a website in minutes with Adobe Templates</a></h2>
-   									<ul class="media-social list-unstyled">
-			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-			              </ul>
-   									<div class="meta">
-   										<p class="mb-0"><a href="#">11/13/2019</a> | <a href="#">12 min read</a></p>
-   									</div>
-   								</div>
-   							</div>
-   						</div>
-   					</div>
-   				</div>
+                    @endforeach
+   	     		</div>
    			</div>
    			<div class="row mt-5">
           <div class="col text-center">
