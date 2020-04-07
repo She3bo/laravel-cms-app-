@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png"> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -82,10 +83,6 @@
                                 <a href="{{route('users.index')}}" class="text-decoration-none">
                                     <li class="list-group-item ">Users</li>
                                 </a>
-                            @endif
-                            <a href="{{route('posts.index')}}" class="text-decoration-none">
-                                <li class="list-group-item ">Posts</li>
-                            </a>
                             <a href="{{route('categories.index')}}"
                                 class="text-decoration-none" >
                                 <li class="list-group-item">Categories</li>
@@ -93,6 +90,10 @@
                             <a href="{{route('tags.index')}}"
                                 class="text-decoration-none" >
                                 <li class="list-group-item">Tags</li>
+                            </a>
+                            @endif
+                            <a href="{{route('posts.index')}}" class="text-decoration-none">
+                                <li class="list-group-item ">Posts</li>
                             </a>
                             <a href="{{route('trash.index')}}"
                                 class="text-decoration-none" >

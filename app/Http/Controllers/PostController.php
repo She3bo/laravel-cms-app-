@@ -22,6 +22,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->isAdmin()){
+            return view('post.index',['posts'=>Post::all()]);
+        }
         return view('post.index',['posts'=>Post::all()]);
     }
 

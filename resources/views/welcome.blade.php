@@ -27,19 +27,22 @@
     
 	  <nav class="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Read<i>it</i>.</a>
+	      <a class="navbar-brand" href="{{url('/')}}">Read<i>it</i>.</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item active"><a href="{{url('/')}}" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Articles</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">Team</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-              <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Sign Up</a></li>
-	        </ul>
+            @guest
+            <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Sign Up</a></li>
+	          @endguest
+          </ul>
 	      </div>
 	    </div>
 	  </nav>
@@ -98,7 +101,7 @@
                     @endforeach
    	     		</div>
    			</div>
-   			<div class="row mt-5">
+   			<!-- <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
@@ -112,7 +115,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
    		</div>
    	</section>
 
@@ -210,7 +213,7 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
     
