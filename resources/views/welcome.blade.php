@@ -42,6 +42,9 @@
             <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Login</a></li>
             <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Sign Up</a></li>
 	          @endguest
+            @auth
+            <li class="nav-item"><a href="{{route('users.profile',auth()->user()->id)}}" class="nav-link"><span class="icon-user"></a></li>
+            @endauth
           </ul>
 	      </div>
 	    </div>
@@ -92,7 +95,7 @@
 			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
 			              </ul>
    									<div class="meta">
-   										<p class="mb-0"><a href="#">{{$post->created_at}}</a> | <a href="#">12 min read</a></p>
+   										<p class="mb-0">{{$post->created_at}}</p>
    									</div>
    								</div>
    							</div>
