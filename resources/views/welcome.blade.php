@@ -38,6 +38,7 @@
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Articles</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">Team</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+              <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Sign Up</a></li>
 	        </ul>
 	      </div>
 	    </div>
